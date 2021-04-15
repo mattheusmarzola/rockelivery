@@ -6,7 +6,7 @@ defmodule Rockelivery.Users.User.Create do
 
   def call(params) do
     params
-    |> User.changeset()
+    |> User.changeset_create()
     |> Repo.insert()
     |> handle_insert()
   end
