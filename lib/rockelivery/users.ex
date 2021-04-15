@@ -3,5 +3,6 @@ defmodule Rockelivery.Users do
 
   defdelegate create(params), to: User.Create, as: :call
   defdelegate get_by_id(id), to: User.Get, as: :by_id
+  defdelegate delete_by_id(id), to: User.Delete, as: :by_id
   
 end
