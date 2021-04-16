@@ -3,7 +3,6 @@ defmodule Rockelivery.Users.User.CreateTest do
 
   import Rockelivery.Factory
 
-  alias Ecto.Changeset
   alias Rockelivery.Error
   alias Rockelivery.Users.User
   alias Rockelivery.Users.User.Create
