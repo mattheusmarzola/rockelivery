@@ -6,8 +6,7 @@ defmodule RockeliveryWeb.ItemsView do
   def render("create.json", %{item: %Item{} = item}) do
     %{
       message: "Item created!",
-      item: item 
+      item: item
     }
   end
-  
 end

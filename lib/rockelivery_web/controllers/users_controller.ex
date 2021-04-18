@@ -1,6 +1,6 @@
 defmodule RockeliveryWeb.UsersController do
   use RockeliveryWeb, :controller
-  
+
   alias Rockelivery.Users
   alias Rockelivery.Users.User
   alias RockeliveryWeb.FallbackController
@@ -27,7 +27,7 @@ defmodule RockeliveryWeb.UsersController do
     with {:ok, %User{}} <- Users.delete_by_id(id) do
       conn
       |> put_status(:no_content)
-      |> text("") 
+      |> text("")
     end
   end
 
@@ -35,7 +35,7 @@ defmodule RockeliveryWeb.UsersController do
     with {:ok, %User{} = user} <- Users.update(params) do
       conn
       |> put_status(:ok)
-      |> render("user.json", user: user) 
+      |> render("user.json", user: user)
     end
   end
 end

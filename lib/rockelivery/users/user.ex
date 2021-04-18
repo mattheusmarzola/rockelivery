@@ -7,7 +7,7 @@ defmodule Rockelivery.Users.User do
   @primary_key {:id, :binary_id, autogenerate: true}
 
   @required_params [:age, :address, :cep, :cpf, :email, :password, :name]
-  @required_params_update @required_params--[:password]
+  @required_params_update @required_params -- [:password]
 
   @derive {Jason.Encoder, only: [:id, :age, :cpf, :name, :address, :email]}
 
@@ -19,9 +19,9 @@ defmodule Rockelivery.Users.User do
     field :email, :string
     field :name, :string
     field :password_hash, :string
-    field :password, :string, virtual: true 
+    field :password, :string, virtual: true
 
-    timestamps() 
+    timestamps()
   end
 
   def changeset_create(struct \\ %__MODULE__{}, params) do
@@ -30,7 +30,7 @@ defmodule Rockelivery.Users.User do
     |> validate_length(:password, min: 6)
     |> put_password_hash()
   end
-  
+
   def changeset_update(struct \\ %__MODULE__{}, params) do
     struct
     |> changes(params, @required_params_update)
@@ -49,7 +49,8 @@ defmodule Rockelivery.Users.User do
   end
 
   defp put_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    change(changeset, Pbkdf2.add_hash(password)) 
+    change(changeset, Pbkdf2.add_hash(password))
   end
+
   defp put_password_hash(changeset), do: changeset
 end
