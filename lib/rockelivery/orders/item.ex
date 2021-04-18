@@ -1,6 +1,8 @@
-defmodule Rockelivery.Items.Item do
+defmodule Rockelivery.Orders.Item do
   use Ecto.Schema
   import Ecto.Changeset
+
+  alias Rockelivery.Orders.Order
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -15,7 +17,9 @@ defmodule Rockelivery.Items.Item do
     field :photo, :string
     field :price, :decimal
 
-    timestamps() 
+    many_to_many :orders, Order, join_through: "orders_items"
+
+    timestamps()
   end
 
   def changeset(struct \\ %__MODULE__{}, params) do
@@ -25,5 +29,4 @@ defmodule Rockelivery.Items.Item do
     |> validate_length(:description, min: 3)
     |> validate_number(:price, greater_than: 0)
   end
-
 end
