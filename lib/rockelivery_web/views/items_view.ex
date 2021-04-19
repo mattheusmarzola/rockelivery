@@ -1,7 +1,7 @@
 defmodule RockeliveryWeb.ItemsView do
   use RockeliveryWeb, :view
 
-  alias Rockelivery.Items.Item
+  alias Rockelivery.Orders.Item
 
   def render("create.json", %{item: %Item{} = item}) do
     %{
